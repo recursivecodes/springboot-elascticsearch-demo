@@ -44,6 +44,7 @@ public class SearchDemoApplication {
 	}
 
 	@PostConstruct
+	@SuppressWarnings({"unchecked"})
 	public void buildIndex() throws IOException, FeedException {
 		log.info("Building index...");
 		searchOperations.indexOps(BlogPost.class).refresh();
@@ -55,7 +56,7 @@ public class SearchDemoApplication {
 		SyndFeed feed = input.build(new XmlReader(feedSource));
 
 		List<BlogPost> blogPosts = new ArrayList<>();
-		feed.getEntries().stream().forEach( (s) -> {
+		feed.getEntries().forEach( (s) -> {
 			SyndEntry item = (SyndEntry) s;
 			String article = ((SyndContentImpl) item.getContents().get(0)).getValue();
 			article = StringEscapeUtils.unescapeHtml4(article);
