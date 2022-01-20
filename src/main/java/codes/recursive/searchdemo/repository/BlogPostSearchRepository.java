@@ -1,14 +1,14 @@
 package codes.recursive.searchdemo.repository;
 
-import codes.recursive.searchdemo.domain.Favorite;
+import codes.recursive.searchdemo.domain.BlogPost;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.annotations.Query;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
-public interface FavoriteSearchRepository extends ElasticsearchRepository<Favorite, String> {
-    Page<Favorite> findByFavoriteBeer(String favoriteBeer, Pageable pageable);
+public interface BlogPostSearchRepository extends ElasticsearchRepository<BlogPost, String> {
+    Page<BlogPost> findByArticle(String article, Pageable pageable);
     @Query("{ \"query_string\": { \"query\": \"?0\" }}")
-    Page<Favorite> search(String searchString, Pageable pageable);
+    Page<BlogPost> search(String searchString, Pageable pageable);
 }
 

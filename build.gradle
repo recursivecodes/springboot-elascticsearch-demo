@@ -28,8 +28,9 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
-	implementation('com.github.javafaker:javafaker:1.0.2') { exclude module: 'org.yaml' }
 	implementation group: 'org.yaml', name: 'snakeyaml', version: '1.26'
+	implementation("org.apache.commons:commons-text:1.9")
+	implementation("rome:rome:1.0")
 }
 
 test {
