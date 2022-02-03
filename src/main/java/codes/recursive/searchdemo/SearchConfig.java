@@ -20,7 +20,7 @@ public class SearchConfig extends AbstractElasticsearchConfiguration {
         final ClientConfiguration clientConfiguration =
                 ClientConfiguration
                         .builder()
-                        .connectedTo("localhost:9200")
+                        .connectedTo("minikube:9200")
                         .build();
 
         return RestClients.create(clientConfiguration).rest();
