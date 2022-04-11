@@ -11,7 +11,7 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 
 @Configuration
 @EnableElasticsearchRepositories(basePackages = "codes.recursive.searchdemo.repository")
-@ComponentScan(basePackages = { "codes.recursive.searchdemo" })
+@ComponentScan(basePackages = {"codes.recursive.searchdemo"})
 public class SearchConfig extends AbstractElasticsearchConfiguration {
     @Override
     @Bean
@@ -20,7 +20,7 @@ public class SearchConfig extends AbstractElasticsearchConfiguration {
         final ClientConfiguration clientConfiguration =
                 ClientConfiguration
                         .builder()
-                        .connectedTo("minikube:9200")
+                        .connectedTo("docker.local:9200")
                         .build();
 
         return RestClients.create(clientConfiguration).rest();

@@ -21,18 +21,18 @@ public class SearchController {
         this.blogPostService = blogPostService;
     }
 
-    @GetMapping({"/search/{searchString}", "/search/{searchString}/{page}/{max}"})
+    @GetMapping({"/search/"})
     @ResponseBody
-    public Page<BlogPost> searchBlogPosts(@PathVariable String searchString, @PathVariable Optional<Integer> page, @PathVariable Optional<Integer> max) {
+    public Page<BlogPost> searchBlogPosts(@RequestParam String searchString, @RequestParam Optional<Integer> page, @RequestParam Optional<Integer> max) {
         Integer maxResults = max.orElse(25);
         Integer pageNum = page.orElse(0);
         log.info("Searching by string {} (page {}, max {} results)", searchString, page, max);
         return blogPostService.searchBlogPosts(searchString, pageNum, maxResults);
     }
 
-    @GetMapping({"/search/article/{article}", "/search/article/{article}/{page}/{max}"})
+    @GetMapping({"/search/article"})
     @ResponseBody
-    public Page<BlogPost> searcArticles(@PathVariable String article, @PathVariable Optional<Integer> page, @PathVariable Optional<Integer> max) {
+    public Page<BlogPost> searcArticles(@RequestParam String article, @RequestParam Optional<Integer> page, @RequestParam Optional<Integer> max) {
         Integer maxResults = max.orElse(25);
         Integer pageNum = page.orElse(0);
         log.info("Searching by article {} (page {}, max {} results)", article, page, max);

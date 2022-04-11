@@ -17,11 +17,11 @@ public class BlogPostService {
         this.blogPostSearchRepository = blogPostRepository;
     }
 
-    public void createProductIndexBulk(final List<BlogPost> blogPosts) {
+    public void createBlogPostIndexBulk(final List<BlogPost> blogPosts) {
         blogPostSearchRepository.saveAll(blogPosts);
     }
 
-    public void createProductIndex(final BlogPost blogPost) {
+    public void createBlogPostIndex(final BlogPost blogPost) {
         blogPostSearchRepository.save(blogPost);
     }
 

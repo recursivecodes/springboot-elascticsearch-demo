@@ -68,6 +68,6 @@ public class SearchDemoApplication {
 			blogPosts.add(blogPost);
 		});
 		log.info("Creating bulk index of {} records", blogPosts.size());
-		blogPostService.createProductIndexBulk(blogPosts);
+		blogPostService.createBlogPostIndexBulk(blogPosts);
 	}
 }
