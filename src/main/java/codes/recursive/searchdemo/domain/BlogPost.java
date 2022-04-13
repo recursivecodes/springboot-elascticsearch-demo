@@ -29,5 +29,4 @@ public class BlogPost {
     @Column(length = 32000)
     @Field(type = FieldType.Text, name = "article")
     private String article;
-
 }
