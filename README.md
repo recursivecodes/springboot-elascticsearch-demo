@@ -17,7 +17,7 @@ POST_ID=$(curl -X POST \
   -H 'Content-Type: application/json' \
   --data-raw  '
     {
-      "title": "A story about friends",
+      "title": "A Story About Friends",
       "description": "A tale as old as time...",
       "article": "It is truly serendipitous that we met today."
     }
@@ -37,7 +37,7 @@ curl -X PUT \
   --data-raw  '
     {
       "id": "'"$POST_ID"'", 
-      "title": "A story about friends",
+      "title": "A Story About Friends",
       "description": "A tale as old as time...",
       "article": "It is truly dumb luck that we met today."
     }
