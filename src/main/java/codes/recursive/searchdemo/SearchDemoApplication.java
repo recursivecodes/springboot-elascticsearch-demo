@@ -48,7 +48,7 @@ public class SearchDemoApplication {
 	public void buildIndex() throws IOException, FeedException {
 		log.info("Building index...");
 		searchOperations.indexOps(BlogPost.class).refresh();
-		blogPostService.deleteAll();
+		blogPostService.deleteIndexAll();
 
 		log.info("Importing blog posts...");
 		URL feedSource = new URL("https://recursive.codes/blog/feed");
@@ -68,6 +68,6 @@ public class SearchDemoApplication {
 			blogPosts.add(blogPost);
 		});
 		log.info("Creating bulk index of {} records", blogPosts.size());
-		blogPostService.createBlogPostIndexBulk(blogPosts);
+		blogPostService.saveIndexBulk(blogPosts);
 	}
 }

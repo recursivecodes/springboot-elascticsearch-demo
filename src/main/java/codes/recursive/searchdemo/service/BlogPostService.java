@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BlogPostService {
@@ -17,15 +18,22 @@ public class BlogPostService {
         this.blogPostSearchRepository = blogPostRepository;
     }
 
-    public void createBlogPostIndexBulk(final List<BlogPost> blogPosts) {
+    public Optional<BlogPost> findById(final String id) {
+        return blogPostSearchRepository.findById(id);
+    }
+
+    public void saveIndexBulk(final List<BlogPost> blogPosts) {
         blogPostSearchRepository.saveAll(blogPosts);
     }
 
-    public void createBlogPostIndex(final BlogPost blogPost) {
+    public void saveIndex(final BlogPost blogPost) {
         blogPostSearchRepository.save(blogPost);
     }
 
-    public void deleteAll() {
+    public void deleteIndex(final BlogPost blogPost) {
+        blogPostSearchRepository.delete(blogPost);
+    }
+    public void deleteIndexAll() {
         blogPostSearchRepository.deleteAll();
     }
 
