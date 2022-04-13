@@ -46,10 +46,11 @@ public class SearchDemoApplication {
 	@PostConstruct
 	@SuppressWarnings({"unchecked"})
 	public void buildIndex() throws IOException, FeedException {
+		log.info("Deleting index...");
+		searchOperations.indexOps(BlogPost.class).delete();
 		log.info("Building index...");
-		searchOperations.indexOps(BlogPost.class).refresh();
+		searchOperations.indexOps(BlogPost.class).create();
 		blogPostService.deleteIndexAll();
-
 		log.info("Importing blog posts...");
 		URL feedSource = new URL("https://recursive.codes/blog/feed");
 		SyndFeedInput input = new SyndFeedInput();
