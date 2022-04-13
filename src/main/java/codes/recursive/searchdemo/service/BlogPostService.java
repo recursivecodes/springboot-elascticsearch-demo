@@ -33,6 +33,7 @@ public class BlogPostService {
     public void deleteIndex(final BlogPost blogPost) {
         blogPostSearchRepository.delete(blogPost);
     }
+
     public void deleteIndexAll() {
         blogPostSearchRepository.deleteAll();
     }
