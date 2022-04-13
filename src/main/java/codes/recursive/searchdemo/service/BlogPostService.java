@@ -1,6 +1,7 @@
 package codes.recursive.searchdemo.service;
 
 import codes.recursive.searchdemo.domain.BlogPost;
+import codes.recursive.searchdemo.data.repository.BlogPostRepository;
 import codes.recursive.searchdemo.repository.BlogPostSearchRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,9 +14,12 @@ import java.util.Optional;
 @Service
 public class BlogPostService {
     private final BlogPostSearchRepository blogPostSearchRepository;
+    private final BlogPostRepository blogPostRepository;
 
-    public BlogPostService(BlogPostSearchRepository blogPostRepository) {
-        this.blogPostSearchRepository = blogPostRepository;
+    public BlogPostService(BlogPostSearchRepository blogPostSearchRepository,
+                           BlogPostRepository blogPostRepository) {
+        this.blogPostSearchRepository = blogPostSearchRepository;
+        this.blogPostRepository = blogPostRepository;
     }
 
     public Optional<BlogPost> findById(final String id) {
@@ -23,10 +27,12 @@ public class BlogPostService {
     }
 
     public void saveIndexBulk(final List<BlogPost> blogPosts) {
+        blogPostRepository.saveAll(blogPosts);
         blogPostSearchRepository.saveAll(blogPosts);
     }
 
     public void saveIndex(final BlogPost blogPost) {
+        blogPostRepository.save(blogPost);
         blogPostSearchRepository.save(blogPost);
     }
 

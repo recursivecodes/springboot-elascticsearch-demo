@@ -1,5 +1,6 @@
 package codes.recursive.searchdemo;
 
+import codes.recursive.searchdemo.data.repository.BlogPostRepository;
 import codes.recursive.searchdemo.domain.BlogPost;
 import codes.recursive.searchdemo.service.BlogPostService;
 import com.sun.syndication.feed.synd.SyndContentImpl;
@@ -13,6 +14,7 @@ import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -22,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
+@EnableJpaRepositories(basePackageClasses = BlogPostRepository.class)
 @Slf4j
 public class SearchDemoApplication {
 
